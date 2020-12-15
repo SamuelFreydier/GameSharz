@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href='{{ asset("css/stylegz.css") }}'>
+{% endblock %}
+{% block title %}Accueil - Gamesharz{% endblock %}
+
+{% block body %}
+<body class="noselect">
+    <div id="searchFirstPageContainer">
+        <div id="topLeftImg"></div>
+
+        <div id="searchContainer">
+            <h1>
+				FIND <span class="textColor">A GAME</span> <br>
+				WITH <span class="textColor">G</span>AMESHARZ
+			</h1>
+				
+			<form>
+				<div class="searchBar">
+                    {{ form_start(form) }}
+					    <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+					    {{ form_widget(form.filter) }}
+                    {{ form_end(form) }}
+                </div>
+
+                
+				<div>
+                    <a href="/posts"><button class="firstSearchPageButton">Voir tous les posts</button></a>
+                </div>
+
+			</form>
+        </div>
+
+        <div id="topRightImg"></div>
+    </div>
+    </body>
+{% endblock %}

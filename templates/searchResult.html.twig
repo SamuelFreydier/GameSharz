@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href='{{ asset("css/stylegz.css") }}'>
+{% endblock %}
+{% block title %}Catalogue - Gamesharz{% endblock %}
+
+
+{% block body %}
+    <div class="header buffer">
+        <a href="/posts"><div class="logo" style="background-image: url({{ asset("img/logo/gamesharz.png") }});"></div></a>
+
+        <div id="searchBarWidth">
+            <div id="searchBarContainer">
+                <div class="searchBar" style="width: 50%;">
+                    <form class="formsearch3" method="GET" id="formsearch1">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                        <input type="text" placeholder="Rechercher.." name="filter" id="searchbar" onkeyup="search_filter()">
+                    </form>
+                </div>
+                <div class="searchBar" style="margin-left: 2vw;">
+                    <form class="formsearch3" action="/posts/api/" id="formsearch2">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                        <input type="text" placeholder="API" name="filter" id="searchbar">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div>
+            <a href="/posts/create"><button class="cssButton"> Nouveau Post </button></a>
+            <a href="/user/{{ user.username }}"><button class="cssButton"> Mon profil </button></a>
+            <a href="/logout"><button class="cssButton"> Se Déconnecter </button></a>
+        </div>
+    </div>
+
+
+    <div id="content">
+        <div id="tagList" class="noselect">
+            <form>
+                <button type="submit" form="formsearch1"> Rechercher </button>
+                {% for category in categories %}
+                    <div><label> {{category}} </label> <input type="checkbox" name="category[]" value="{{ category }}" form="formsearch1"></div>
+                {% endfor %}
+                <button type="submit" form="formsearch2"> API </button>
+                {% for category in categories %}
+                    <div><label> {{category}} </label> <input type="checkbox" name="category[]" value="{{ category }}" form="formsearch2"></div>
+                {% endfor %}
+            </form>
+        </div>
+        <div>
+            <div>
+                <p> Résultats pour 
+                    {% if filter is defined %}
+                        <span style="color: blue;">"<b>{{ filter }}</b>"</span>
+                    {% else %}
+                        <b>tous les posts</b>
+                    {% endif %}
+                {% if tagsString is defined %}
+                avec les tags : </p>
+                <span style="color: blue;"> {{tagsString}} </span>
+                {% endif %}
+            </div>
+
+            <div class="postContent postContentBuffer">
+                {% for post in posts %}
+                    <div class="postContainer">
+                        {% if post.img != null %}
+                            <a href="/posts/{{ post.id }}"><div class="postImg" style="background-image: url({{ post.img }});"></div></a>
+                        {% else %}
+                            <a href="/posts/{{ post.id }}"><div class="postImg" style="background-image: url({{ asset("img/logo/gamesharz.png") }});"></div></a>
+                        {% endif %}
+                        <a href="/posts/{{ post.id }}" class="postTitle" id="postTitle">{{ post.title }}</a>
+                        <div id="postDesc">{{ post.description }}</div>
+                        <div class="postInfoContainer">
+                            <div class="postInfo"><p>{{ post.downloads }}</p><i class="fas fa-save fa-lg"></i></div>
+                            <div class="postInfo"><p>{{ post.likes }}</p><i class="fas fa-thumbs-up fa-lg"></i></div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('js/searchFilter.js') }}"></script>
+{% endblock %}

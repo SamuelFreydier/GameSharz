@@ -1,12 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block meta %}
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% endblock %}
+        <title>{% block title %}{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+            <script src="https://kit.fontawesome.com/58e6604d7a.js" crossorigin="anonymous"></script>
+
+            <link rel="apple-touch-icon" sizes="180x180" href={{ asset('img/headicons/apple-touch-icon.png') }}>
+            <link rel="icon" type="image/png" sizes="32x32" href={{ asset("img/headicons/favicon-32x32.png") }}>
+            <link rel="icon" type="image/png" sizes="16x16" href={{ asset("img/headicons/favicon-16x16.png") }}>
+            <link rel="manifest" href={{ asset("img/headicons/site.webmanifest") }}>
+        {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        {% endblock %}
     </body>
 </html>

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href='{{ asset("css/stylegz.css") }}'>
+{% endblock %}
+{% block title %}Modification de Profil - Gamesharz{% endblock %}
+
+{% block body %}
+
+    <div class="header" style="background-color: transparent;">
+        <a href="/posts"><div class="logo" style="background-image: url({{ asset("img/logo/gamesharz.png") }});"></div></a>
+    </div>
+
+    <div id="postPageContainer">
+        <!-- de id a class -->
+        <!-- LEFT BORDER -->
+        <div class="leftBorder" style="background-color: #16a0f8;"></div>
+        <!-- de id a class -->
+
+        <!-- CONTENT -->
+        <div id="postPageContent">
+            <div id="postPageTitle"><h1>Modifiez votre profil</h1></div>
+
+            <h2>Vous pouvez ici modifier certains aspects de votre profil !</h2>
+
+            {{ form_start(form, {'attr': {'id': 'createPostPage'}}) }}
+                {{form_errors(form)}}             
+                <label>Image de profil</label>
+                {{form_errors(form.img)}}
+                {{form_widget(form.img)}}
+
+                <label>Statut</label>
+                {{form_errors(form.statut)}}
+                {{form_widget(form.statut)}}
+
+                <label>Biographie</label>
+                {{form_errors(form.bio)}}
+                {{form_widget(form.bio)}}
+
+                <div>
+                    <button class="cssButton" type="submit">Changer</button>
+                    <a href="/user/{{user.username}}"><button class="cssButton">Annuler</button></a>
+                </div>
+            {{form_end(form)}}
+        </div>
+
+        <!-- de id a class -->
+        <!-- RIGHT BORDER -->
+        <div class="rightBorder" style="background-color: #3814d9;"></div>
+        <!-- de id a class -->
+
+    </div>
+{% endblock %}

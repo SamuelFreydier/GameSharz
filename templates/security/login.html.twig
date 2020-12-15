@@ -1,0 +1,59 @@
+{% extends './base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href={{ asset("css/stylegz.css") }}>
+{% endblock %}
+{% block title %}Connexion - GameSharz{% endblock %}
+
+{% block body %}
+    <body style="background-color: #d4d5d7;">
+        <div class="header" style="position: initial; padding: 0; width: initial; justify-content: center;">
+            <a href="/posts"><div class="logo" style="background-image: url({{ asset("img/logo/gamesharz.png") }}); background-position: 50% 50%;"></div></a>
+        </div>
+        <div id="logInContainer">
+            <div>
+                <h2>Connexion<h2>
+            </div>
+            <form method="post" class="noselect">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+
+                <div>
+                    <div><label for="inputUsername">Nom d'utilisateur</label></div>
+                    <div><input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus></div>
+                </div>
+
+                <div>
+                    <div><label for="inputPassword">Mot de passe</label></div>
+                    <div><input type="password" name="password" id="inputPassword" class="form-control" required></div>
+                </div>
+
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+
+                    {#Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                    See https://symfony.com/doc/current/security/remember_me.html#}
+
+                    
+                <div style="align-self: center;"><button class="cssButton" type="submit">
+                    Se connecter
+                </button></div>
+                <div style="align-self: center;">
+                    <label for="stayConnected" style="all: revert;">Se souvenir de moi</label>
+                    <input type="checkbox" id="stayConnected" style="all: revert;" name="_remember_me" class="">
+                    
+                </div>
+            </form>
+            <a href="/signup">S'inscrire</a>
+        </div>
+    </body>
+{% endblock %}

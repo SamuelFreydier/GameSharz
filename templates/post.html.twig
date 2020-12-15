@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href='{{ asset("css/stylegz.css") }}'>
+{% endblock %}
+{% block title %}{{post.title}} - Gamesharz{% endblock %}
+
+{% block body %}
+
+    <div class="header" style="background-color: transparent;">
+        <a href="/posts"><div class="logo" style="background-image: url({{ asset("img/logo/gamesharz.png") }});"></div></a>
+    </div>
+
+
+    <div id="postPageContainer">
+        <!-- de id a class -->
+        <!-- LEFT BORDER -->
+        <div class="leftBorder"></div>
+        <!-- de id a class -->
+
+        <!-- CONTENT -->
+        <div id="postPageContent">
+            <div id="postPageTitle"><h1>{{post.title}}</h1></div>
+            <div id="creatorName"><a href="/user/{{post.user.username}}">{{ post.user.username }}</a></div>
+
+            <p>{{post.datestring}}</p>
+
+            <div id="postPageAcroche">
+                {{post.description}}
+            </div>
+
+            {% if post.img != null %}
+                <div class="imgContainer"><div><img src="{{asset(post.img)}}" id="postPageImg"/></div></div>
+            {% endif %}
+
+            {% if post.text != null %}
+                <div id="postPageDescription">
+                    {{post.text}}
+                </div>
+            {% endif %}
+
+            <div id="postPageFooter">
+                <div class="flexBox">
+                    <div class="alignFlexEnd">
+                        {{form_start(form2)}}
+                            <button type="submit" class="cssButton">Télécharger</button>
+                            {{form_widget(form2.lien, {'attr': {'value': post.lien}})}}
+                        {{form_end(form2)}}
+                    </div>
+                    {% if post.user.id == currentuser.id %}
+                        <div class="alignFlexEnd"><a href="/posts/{{post.id}}/edit"><button class="cssButton">Modifier</button></a></div>
+                        <div class="alignFlexEnd"><a href="/posts/{{post.id}}/delete"><button class="cssButton">Supprimer</button></a></div>
+                    {% endif %}
+                </div>
+                <div class="postInfoContainer">
+                    <div class="postInfo"><p>{{post.downloads}}</p><i class="fas fa-save fa-lg"></i></div>
+                    <div class="postInfo"><p>{{post.likes}}</p><a href="/posts/{{post.id}}/like"><i class="fas fa-thumbs-up fa-lg"></a></i></div>
+                </div>
+            </div>
+
+            <div id="commentSectionContainer">
+                <div id="userComment">   
+                    {{form_start(form)}}
+                        {{form_errors(form.description)}}
+                        {{form_widget(form.description)}}
+                        <button type="submit" class="cssButton">Envoyer</button>
+                    {{form_end(form)}}
+                </div>
+
+                <div id="commentSection">
+                    {% for commentary in commentaries %}
+                        <div>    
+                            <div class="commentContainer">
+                                <!-- Image du profil avec un <a> pour cliquer sur la photo -->
+                                <a href="/user/{{commentary.user.username}}"><img src="{{asset(commentary.user.img)}}" class="profilPic"></a>
+
+                                <!-- Partie principale du tweet -->
+                                <div class="commentBody">
+                                    <!-- Div avec le Username et la date du poste -->
+                                    <div class="commentInfo">
+                                        <!-- Username -->
+                                        <div><b><a href="/user/{{commentary.user.username}}">{{commentary.user.username}}</a></b></div>
+                                        <!-- Date -->
+                                        <div>{{commentary.datestring}}</div>
+
+                                        {% if commentary.user.id == currentuser.id %}
+                                            <div><a href="/posts/{{post.id}}/commentaries/{{commentary.id}}/delete"><button class="alignFlexEnd cssButton">Supprimer</button></a></div>
+                                        {% endif %}
+                                    </div>
+
+                                    <!-- le texte du tweet -->
+                                    <div class="commentText">   
+                                        {{commentary.description}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- de id a class -->
+        <!-- RIGHT BORDER -->
+        <div class="rightBorder"></div>
+        <!-- de id a class -->
+
+    </div>
+{% endblock %}

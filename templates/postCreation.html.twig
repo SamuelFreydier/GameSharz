@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href={{ asset("css/stylegz.css") }}>
+{% endblock %}
+{% block title %}Création de Post - Gamesharz{% endblock %}
+
+{% block body %}
+
+    <div class="header" style="background-color: transparent;">
+        <a href="/posts"><div class="logo" style="background-image: url({{ asset("img/logo/gamesharz.png") }});"></div></a>
+    </div>
+
+    <div id="postPageContainer">
+        <!-- de id a class -->
+        <!-- LEFT BORDER -->
+        <div class="leftBorder"></div>
+        <!-- de id a class -->
+
+        <!-- CONTENT -->
+        <div id="postPageContent">
+            <div id="postPageTitle"><h1>Crééz un post</h1></div>
+
+            <h2>Vous pouvez ici créer un post afin de partager votre jeu à d'autres utilisateurs !</h2>
+
+
+            {{ form_start(form, {'attr': {'id': 'createPostPage'}}) }}
+                {{form_errors(form)}}
+                <label>Titre</label>
+                {{form_errors(form.title)}}
+                {{form_widget(form.title)}}
+                {#<input type="text" name="title" placeholder="Titre...">#}
+
+                <label>Résumé</label>
+                {{form_errors(form.description)}}
+                {{form_widget(form.description)}}
+                {#<input type="text" name="description" placeholder="Résumé...">#}
+                
+                <label>Catégorie</label>
+                {{form_errors(form.category)}}
+                {{form_widget(form.category)}}
+                {#<select name="category" placeholder="Catégorie">
+                    <option value="">--Choisissez une catégorie--</option>
+                    <option value="Action">Action</option>
+                    <option value="Aventure">Aventure</option>
+                    <option value="Horreur">Horreur</option>
+                    <option value="Plateforme">Plateforme</option>
+                    <option value="Strategie">Stratégie</option>
+                    <option value="Divers">Divers/Autre</option>
+                </select>#}
+
+                <label>Jeu à télécharger</label>
+                {{form_errors(form.lien)}}
+                {{form_widget(form.lien)}}
+                {#<input type="file" name="download">#}
+
+                <label>Image (facultatif)</label>
+                {{form_errors(form.img)}}
+                {{form_widget(form.img)}}
+                {#<input type="file" name="img">#}
+
+                <label>Description (facultatif)</label>
+                {{form_errors(form.text)}}
+                {{form_widget(form.text)}}
+                {#<textarea name="text" placeholder="Description..."></textarea>#}
+
+                <div>
+                    <button class="cssButton" type="submit">Poster</button>
+                    <a href="/posts"><button class="cssButton" type="button">Retour</button></a>
+                </div>
+            {{ form_end(form) }}
+
+
+
+
+
+        </div>
+
+
+        <!-- de id a class -->
+        <!-- RIGHT BORDER -->
+        <div class="rightBorder"></div>
+        <!-- de id a class -->
+
+    </div>
+{% endblock %}

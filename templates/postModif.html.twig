@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href='{{ asset("css/stylegz.css") }}'>
+{% endblock %}
+{% block title %}Modification de Post - Gamesharz{% endblock %}
+
+{% block body %}
+
+    <div class="header" style="background-color: transparent;">
+        <a href="/posts"><div class="logo" style="background-image: url({{ asset("img/logo/gamesharz.png") }});"></div></a>
+    </div>
+
+    <div id="postPageContainer">
+        <!-- de id a class -->
+        <!-- LEFT BORDER -->
+        <div class="leftBorder"></div>
+        <!-- de id a class -->
+
+        <!-- CONTENT -->
+        <div id="postPageContent">
+            <div id="postPageTitle"><h1>Modifiez votre Post</h1></div>
+
+            <h2>Vous pouvez ici modifier certains aspects de votre Post !</h2>
+
+
+            {{ form_start(form, {'attr': {'id': 'createPostPage'}}) }}
+                {{form_errors(form)}}
+                <label>Titre</label>
+                {{form_errors(form.title)}}
+                {{form_widget(form.title)}}
+
+                <label>Phrase d'accroche</label>
+                {{form_errors(form.description)}}
+                {{form_widget(form.description)}}
+                
+                <label>Catégorie</label>
+                {{form_errors(form.category)}}
+                {{form_widget(form.category)}}
+
+                <label>Jeu/Fichier à télécharger</label>
+                {{form_errors(form.lien)}}
+                {{form_widget(form.lien)}}
+
+                <label>Image</label>
+                {{form_errors(form.img)}}
+                {{form_widget(form.img)}}
+
+                <label>Description</label>
+                {{form_errors(form.text)}}
+                {{form_widget(form.text)}}
+
+                
+                <div>
+                    <button class="cssButton" type="submit">Modifier</button>
+                    <a href="/posts/{{post.id}}"><button class="cssButton">Annuler</button></a>
+                </div>
+            {{form_end(form)}}
+
+
+
+
+
+        </div>
+
+
+        <!-- de id a class -->
+        <!-- RIGHT BORDER -->
+        <div class="rightBorder"></div>
+        <!-- de id a class -->
+
+    </div>
+{% endblock %}

@@ -1,0 +1,647 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Jost', 'Roboto', sans-serif;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.alignFlexEnd{
+    align-self: flex-end;
+    margin-left: 1vw;
+}
+
+.alignSelfCenter{
+    align-self: center;
+}
+
+.textColor{
+    color: #1458d9;
+}
+
+.flexBox{
+    display: flex;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+
+/*
+*	
+*	PAGE DE RECHERCHE DE POST
+*
+*/
+
+
+/* de id a class */
+.header{
+    position: fixed; 
+    top: 0;
+    background-color: white;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh 2vw 1vh 2vw;
+}
+
+/* de id a class */
+.header a .logo{
+    width: 120px;
+    height: 74px;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+/* de id a class */
+.header button{
+    padding: 2px 5px;
+}
+
+#content{
+    margin-top: 120px;
+    margin-left: calc(15% + 2vw);
+    display: flex;
+}
+
+.formsearch3 {
+    display: flex;
+}
+
+#tagList{
+    position: fixed; 
+    background-image: url(../img/display/tagBackground.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 2.5vh; 
+    font-size: x-large;
+    color: white;
+    left: 0;
+    width: 15%;
+    height: 100%;
+    min-width: 90px;
+    margin: 9vh 2vw 0px 0px;
+    display: flex;
+}
+
+#tagList form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 100%;
+}
+
+#tagList form button{
+    width: 100%;
+    align-self: center;
+    border-style: none;
+    font-size: larger;
+    border-radius: 100px;
+    height: 5vh;
+    margin-bottom: 2vh;
+    cursor: pointer;
+}
+
+#tagList form input{
+    margin-right: 2vw;
+    margin-bottom: 2vh;
+    cursor: pointer;
+}
+
+.container input:checked{
+    background-color: #000000;
+  }
+
+
+.postContent{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 2vh;
+}
+
+.postContainer{
+    margin-right: 30px;
+    margin-bottom: 60px;
+    max-width: 270px;
+}
+
+.postImg{
+    width: 270px;
+    height: 190px;
+    margin: 0px;
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+.postTitle{
+    font-weight: bold;
+    font-size: large;
+    margin: 4px 0;
+}
+
+.postInfoContainer{
+    display: flex;
+    flex-direction: row;
+    justify-items: start;
+    float: right;
+    margin-top: 20px;
+    margin-left: 6px;
+}
+
+.postInfo{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+}
+
+.postInfo p{
+    display: flex;
+    flex-direction: row;
+    margin-right: 5px;
+}
+
+
+/*
+*	
+*	PAGE DE POST
+*
+*/
+
+
+#postPageContainer{
+    min-height: 100vh;
+    display: flex;
+}
+
+.leftBorder{
+    width: 15vw;
+    min-width: 160px;
+    background-color: #3814d9;
+}
+
+#postPageContent{
+    width: 70vw;
+    max-width: 1536px;
+    display: flex;
+    flex-direction: column;
+    padding: 2vh 4vw 10vh 4vw;
+}
+
+#postPageContent h1{
+    font-size: 3.5em;
+}
+
+#creatorName{
+    margin-left: 2vh;
+    font-size: larger;
+}
+
+#postPageAcroche{
+    padding-top: 3vh;
+    padding-right: 10vw;
+    font-size: x-large;
+}
+
+.imgContainer{
+    display: flex;
+    justify-content: center;
+}
+
+#postPageImg{
+    margin-top: 3vh;
+    max-height: 50vh;
+    max-width: 100%;
+    margin-right: auto;
+}
+
+#searchBarWidth{
+    width: 50%;
+}
+
+#postPageDescription{
+    margin-top: 2vh;
+    font-size: larger;
+}
+
+#postPageFooter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#commentSectionContainer{
+    margin-top: 10vh;
+}
+
+#userComment{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 5vh;
+}
+
+#userComment form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    width: 90%;
+}
+#userComment form textarea {
+    font-size: 1.2em;
+    padding: 10px;
+    height: 10vh;
+    resize: none;
+}
+
+#userComment button {
+    margin: 5px 0; 
+    align-self: flex-end;
+    font-size: 1.2em;
+    padding: 0px 5px;
+}
+
+.commentContainer{
+    display: flex;
+    flex-direction: row;
+    font-size: larger;
+    margin-bottom: 6vh;
+}
+
+.profilPic{
+    padding-top: 6px;
+    width: 50px;
+    background-position: 50% 50%;
+}
+
+.commentBody{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-left: 20px;
+    width: 100%;
+}
+
+.commentInfo{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3px;
+}
+
+.commentInfo div:first-of-type {
+    margin-right: 20px;
+}
+
+.commentText{
+    padding-right: 15px;    
+}
+
+.rightBorder{
+    width: 15vw;
+    min-width: 160px;
+    background-color: #7e16f8;
+}
+
+
+/*
+*	
+*	PAGE DE CREATION DE POST
+*
+*/
+
+
+#createPostPage{
+    display: flex;
+    flex-direction: column;
+    max-width: 70%;
+    font-size: x-large;
+    margin-top: 3vh;
+}
+
+#createPostPage label{
+    margin-top: 3vh;
+}
+
+#createPostPage input{
+    height: 2em;
+    font-size: large;
+}
+
+#createPostPage textarea{
+    max-width: 100%;
+    max-height: 50vh;
+    height: 20vh;
+    font-size: large;
+}
+
+
+/*
+*	
+*	PREMIERE PAGE DE RECHERCHE
+*
+*/
+
+
+#searchFirstPageContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+#topLeftImg{
+    background-image: url(../img/display/searchPageTopLeft.svg);
+    min-width: 250px;
+    background-repeat: no-repeat;
+    margin-top: 15px;
+}
+
+#searchContainer{
+    height: 90vh;
+    margin-top: 10vh;
+    font-size: xx-large;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#searchContainer form{
+    display: flex;
+    flex-direction: column;
+}
+
+#searchContainer form div{
+    margin-bottom:2vh;
+}
+
+#searchContainer h1{
+margin-bottom: 10vh;
+}
+
+.searchBar{
+    background-color: #E2E2E2;
+    border-radius: 100px;
+    display: flex;
+    padding: 1vh 2vw;
+}
+
+.searchBar button{
+    background-color: #E2E2E2;
+    cursor: pointer;
+    border-style: none;
+    width: 10%;
+}
+
+.searchBar input{
+    background-color: #E2E2E2;
+    border-style: none;
+    width: 90%;
+    align-self: center;
+    font-size: large;
+}
+
+.firstSearchPageButton{
+    border-style: none;
+    border-radius: 100px;
+    font-size: large;
+    background-color: #E2E2E2;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+#topRightImg{
+    background-image: url(../img/display/searchPageTopRight.svg);
+    background-size: contain;
+    min-width: 250px;
+    background-repeat: no-repeat;
+}
+
+#searchBarContainer{
+    display: flex; 
+    flex-direction: row;
+}
+
+
+/*
+*	
+*	PAGE DE LOGIN
+*
+*/
+
+
+#logInContainer{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 10vh 34% 0 34%;
+    font-size: larger;
+    padding: 3vh 3vw;
+    border-radius: 6px;
+}
+
+#logInContainer form{
+    display: flex;
+    flex-direction: column;
+}
+
+#logInContainer form div label{
+    font-size: larger;
+}
+
+#logInContainer form div input{
+    font-size: large;
+    width: 60%;
+    margin-left: 2vw;
+    border-style: none;
+    background-color: #E2E2E2;
+    height: 5vh;
+    margin-bottom: 3vh;
+    border-radius: 4px;
+}
+
+#logInContainer > div:first-child{
+    border-bottom: 1px solid;
+    border-color: #9e9e9e;
+    width: 100%;
+    margin-bottom: 4vh;
+}
+
+.cssButton{
+    background-color: #2131F0;
+    border: none;
+    font-size: large;
+    color: white;
+    border-radius: 100px;
+    padding: 2px 10px;
+}
+
+
+/*
+*	
+*	PAGE DE PROFILE
+*
+*/
+
+
+.profilHeader{
+    display: flex;
+}
+
+.profilHeaderInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#postPageTitle div{
+    font-size: larger;
+    padding-left: 1vw;
+}
+
+.buffer{}
+.postContentBuffer{
+    margin-left: 100px;
+}
+
+/*********************************      MEDIA QUERY      ***********************************/ 
+
+
+@media screen and (max-width: 1176px){
+    #logInContainer{
+        font-size: initial;
+    }
+    #logInContainer form div input {
+        width: 80%;
+    }
+    .header {
+        width: 95%;
+    }
+    .buffer{
+        flex-direction: column;
+    }
+    #content{
+        margin-top: 180px;
+    }
+    #tagList{
+        font-size: medium;
+    }
+}
+
+@media screen and (max-width: 916px){
+    #topLeftImg{
+        min-width: 100px;
+    }
+    #topRightImg{
+        min-width: 100px;
+    }
+    #logInContainer {
+        margin: 10vh 20% 0 20%;
+    }
+    .rightBorder {
+        min-width: 100px;
+    }
+    .leftBorder {
+        min-width: 100px;
+    }
+    .header a .logo {
+        background-size: 50%;
+        background-position: 0px 0px;
+    }
+    .postContent {
+        flex-direction: column;
+        align-items: center;
+    }
+    .postContainer {
+        margin-right: 0px;
+    }
+    #content {
+        margin-left: 0;
+        display: flex;
+        justify-content: center;
+    }
+    #searchBarWidth {
+        width: initial;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .rightBorder {
+        min-width: 0;
+        width: 0;
+    }
+    #postPageContainer{
+        font-size: small;
+    }
+    .cssButton{
+        font-size: small;
+    }
+    #tagList {
+        width: initial;
+    }
+}
+
+@media screen and (max-width: 615px){
+    #searchContainer h1 {
+        font-size: larger;
+    }
+    #logInContainer {
+        margin: 10vh 15% 0 15%;
+    }
+    .commentInfo {
+        flex-direction: column;
+    }
+    #postPageContent {
+        width: initial;
+        padding: 50px 2vw 10vh 4vw;
+    }
+    .leftBorder {
+        min-width: 0px;
+        width: 0;
+    }
+    #userComment form {
+        margin-left: 0px;
+        width: 100%;
+    }
+    #createPostPage {
+        max-width: 100%;
+        font-size: large;
+    }
+}
+
+@media screen and (max-width: 448px){
+    #topLeftImg{
+        min-width: 0px;
+    }
+    #topRightImg{
+        min-width: 0px;
+    }
+    #logInContainer {
+        margin: 10vh 0 0 0;
+    }
+    .postImg {
+        width: 220px;
+    }
+    .postContainer {
+        max-width: 220px;
+    }
+    #postPageContent h1 {
+        font-size: 2em;
+    }
+    #createPostPage {
+        max-width: 80%;
+    }
+}

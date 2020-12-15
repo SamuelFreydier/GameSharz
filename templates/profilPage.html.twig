@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href='{{ asset("css/stylegz.css") }}'>
+{% endblock %}
+{% block title %}{{user.username}} - Gamesharz{% endblock %}
+{% block body %}
+    <div class="header" style="background-color: transparent;">
+        <a href="/posts"><div class="logo" style="background-image: url({{ asset("img/logo/gamesharz.png") }});"></div></a>
+    </div>
+
+    <div id="postPageContainer">
+        <!-- LEFT BORDER -->
+        <div class="leftBorder" style="background-color: #16a0f8;"></div>
+
+        <!-- CONTENT -->
+        <div id="postPageContent" style="margin-top: 5vh;">
+            <div class="profilHeaderInfo">
+                <div class="profilHeader">
+                    <div class="postImg" style="background-image: url({{ asset(user.img) }}); width: 120px; height: 120px; margin-right: 3vw;"></div>
+                    <div class="profilHeaderInfo">
+                        <div id="postPageTitle">
+                            <h1>{{user.username}}</h1>
+                            {% if user.statut != null %}
+                                <div>{{user.statut}}</div>
+                            {% endif %}
+                        </div>                  
+                    </div>
+                </div>
+                {% if user.id == currentUser.id %}
+                    <a href="/user/{{ user.username }}/edit"><button class="cssButton">Modifier</button></a>
+                {% endif %}
+            </div>
+
+            <div id="postPageAcroche" style="margin-bottom: 5vh;">
+                {{user.bio}}
+            </div>
+
+            <div class="postContent">
+
+                {% for post in posts %}
+                    <div class="postContainer">
+                        {% if post.img != null %}
+                            <a href="/posts/{{ post.id }}"><div class="postImg" style="background-image: url({{ asset(post.img) }});"></div></a>
+                        {% else %}
+                            <a href="/posts/{{ post.id }}"><div class="postImg" style="background-image: url({{ asset("img/logo/gamesharz.png") }});"></div></a>
+                        {% endif %}
+                        <a href="/posts/{{ post.id }}" class="postTitle">{{ post.title }}</a>
+                        <div>{{ post.description }}</div>
+                        <div class="postInfoContainer">
+                            <div class="postInfo"><p>{{post.downloads}}</p><i class="fas fa-save fa-lg"></i></div>
+                            <div class="postInfo"><p>{{post.likes}}</p><i class="fas fa-thumbs-up fa-lg"></i></div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <!-- RIGHT BORDER -->
+        <div class="rightBorder" style="background-color: #3814d9;"></div>
+    </div>    
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href={{ asset("css/stylegz.css") }}>
+{% endblock %}
+{% block title %}Inscription - Gamesharz{% endblock %}
+
+
+{% block body %}
+    <body style="background-color: #d4d5d7;">
+        <div class="header" style="position: initial; padding: 0; width: initial; justify-content: center;">
+            <a href="/posts"><div class="logo" style="background-image: url({{ asset("img/logo/gamesharz.png") }}); background-position: 50% 50%;"></div></a>
+        </div>
+        <div id="logInContainer">
+            <div>
+                <h2>Inscription</h2>
+            </div>
+            {{ form_start(form, {'attr': {'class': 'noselect'}}) }}
+
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+
+                <div>
+                    <div><label for="inputUsername">Nom d'utilisateur</label></div>
+                    <div>{{ form_widget(form.username) }}</div>
+                </div>
+
+                <div>
+                    <div><label for="inputEmail">Adresse mail</label></div>
+                    <div>{{ form_widget(form.email) }}</div>
+                </div>
+
+                <div>
+                    <div><label for="inputPassword">Mot de passe</label></div>
+                    <div>{{ form_widget(form.password) }}</div>
+                </div>
+
+                <div>
+                    <div><label for="inputPasswordConfirm">Confirmer le mot de passe</label></div>
+                    <div>{{ form_widget(form.confirmpassword) }}</div>
+                </div>
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+
+
+                <div style="align-self: center;"><button class="cssButton" type="submit">
+                    S'inscrire
+                </button></div>
+            {{ form_end(form) }}
+            <a href="/login">Se Connecter</a>
+        </div>
+    </body>
+{% endblock %}
