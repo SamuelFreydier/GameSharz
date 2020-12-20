@@ -55,8 +55,10 @@ class UserHelper
             $pathImagename = $pathImg.$safeImage.'-'.$newId.'.'.$img->guessExtension();
             $newImagename = $safeImage.'-'.$newId.'.'.$img->guessExtension();
 
-            $filesystem = new Filesystem();
-            $filesystem->remove($user->getImg());
+            if($user->getImg() != "img/logo/gamesharz.png") {
+                $filesystem = new Filesystem();
+                $filesystem->remove($user->getImg());
+            }
 
             $img->move('img/profile', $newImagename);
 

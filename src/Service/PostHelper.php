@@ -109,8 +109,10 @@ class PostHelper
             $pathImagename = $pathImg.$safeImage.'-'.$newId.'.'.$img->guessExtension();
             $newImagename = $safeImage.'-'.$newId.'.'.$img->guessExtension();
 
-            $filesystem = new Filesystem();
-            $filesystem->remove($post->getImg());
+            if($post->getImg() != "img/logo/gamesharz.png") {
+                $filesystem = new Filesystem();
+                $filesystem->remove($post->getImg());
+            }
 
             $img->move('img/posts', $newImagename);
 
